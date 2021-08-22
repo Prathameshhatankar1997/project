@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>javascript validation</title>
+	<link rel="stylesheet" type="text/css" href="validation.css">
+</head>
+<body bgcolor="deepskyblue">
+	<form name="#" onsubmit="return validation()">
+	<center>
+	<table border="0" cellspacing="20" cellpadding="20">
+        <tr>
+		<td>Name</td><td><input type="text" id="user" placeholder="Enter your username"><br><span id="users"></span></td>
+		</tr>
+		<tr>
+		<td>Number</td><td><input type="text" id="number" placeholder="Enter your number"><br><span id="numbers"></span></td>
+		</tr>
+		<tr>
+		<td>Password</td><td><input type="password" id="pass" placeholder="Enter your Password"><br><span id="passs"></span></td>
+		</tr>
+		<tr>
+		<td>Confirm password</td><td><input type="password" id="conpass" placeholder="Enter a right Password"><br><span id="conpasss"></span></td>
+		</tr>
+		<tr>
+		<td>Email</td><td><input type="text" id="email" placeholder="Enter your email"><br><span id="emaill"></span></td>
+		</tr>
+		<tr align="center">
+		<td colspan="2"><button>Submit</button></td>
+	</tr>
+    </table>
+</center>
+    <script type="text/javascript">
+    	
+    	function validation()
+    	{
+    		var user = document.getElementById("user").value;
+    		var number = document.getElementById("number").value;
+    		var password = document.getElementById("pass").value;
+    		var conpass = document.getElementById("conpass").value;
+    		var email = document.getElementById("email").value;
+
+    		 if(user == "")  //emty he to ye print kare
+    		{
+    			document.getElementById("users").innerHTML="**please enter the username**";
+    			return false;
+    		}
+    		if(user.length<2)   //agar kisi ek hi charater dala hoga to ye print kare
+    		{
+    			document.getElementById("users").innerHTML="**please enter the more than one characters**";
+    			return false;
+    		}
+    		if(!isNaN(user))   //agar kisi ne numbers dala hoga to ye print karega
+    		{
+    			document.getElementById("users").innerHTML="**please enter the Alphabets only**";
+    			return false;
+    		}
+    		else
+    		{
+    			document.getElementById("users").innerHTML="";
+    		}	
+
+    		if(number == "")    //emty he to ye print kare
+    		{
+    			document.getElementById("numbers").innerHTML="**please enter the mobile no.**";
+    			return false;
+    		}
+    		 if(isNaN(number))    //agar kisi ne alpbets likhe he to ye print karega
+    		 {
+    		 	document.getElementById("numbers").innerHTML="**please enter the numbers only**";
+    			return false;
+    		}
+    		 if(number.length<10)  //agr numbers 10 se kam he to ye print karega
+    		 {
+    		 	document.getElementById("numbers").innerHTML="**please enter 10 digits no. only**";
+    		 	return false;
+    		 }
+    		 if(number.length>10)  //agr numbers 10 se jada he to ye print karega
+    		 {
+    		 	document.getElementById("numbers").innerHTML="**please enter 10 digits no. only**";
+    		 	return false;
+    		 }
+    		else
+    		{
+    			document.getElementById("numbers").innerHTML="";
+    		}	
+
+    		if(password == "")  //emty he to ye print kare
+    		{
+    			document.getElementById("passs").innerHTML="**please enter the Password**";
+    			return false;
+    		}
+    		if(password.length<8)  //agar password ki length 8 se kam he to ye print karega
+    		{
+    			document.getElementById("passs").innerHTML="**please enter atleast 8 characters Password**";
+    			return false;
+    		}
+    		if(password.search(/[0-9]/)==-1)  //0 se le kar 9 tak agar number nahi he password me to ye print karega
+    		{
+    			document.getElementById("passs").innerHTML="**please enter atleast one number**";
+    			return false;
+    		}
+    		if(password.search(/[A-Z]/)==-1)  // capital A se le kar Z tak agar alphabets nahi he password me to ye print karega
+    		{
+    			document.getElementById("passs").innerHTML="**please enter atleast one Capital Alphabet**";
+    			return false;
+    		}
+    		if(password.search(/[!\@\#\$\%\^\&\*\(\)\_\-\+\=]/)==-1)  //inmese koi bhi symbol nahi he password me to ye print karega
+    		{
+    			document.getElementById("passs").innerHTML="**please enter atleast one symbol**";
+    			return false;
+    		}
+    		else
+    		{
+    			document.getElementById("passs").innerHTML="";
+    		}
+    		if(conpass == "")  //emty he to ye print kare
+    		{
+    			document.getElementById("conpasss").innerHTML="**please enter the Password**";
+    			return false;
+    		}	
+    		 if(conpass!=password)    //agar confirm password match nahi horaha he kisse password se to ye print karega
+    		 {
+    	    	document.getElementById("conpasss").innerHTML="**your Password does not matched**";
+    		 	return false;
+    		 }
+    		else
+    		{
+    			document.getElementById("conpasss").innerHTML="";
+    		}	
+    		if(email == "")  //agar empty he to ye print karega
+    		{
+    			document.getElementById("emaill").innerHTML="**please enter the email**";
+    			return false;
+    		}
+    		if(email.indexOf('@')<=0) //@ ki position agar index value ke hisab se wo 0 pe he to wo ye print karega 
+    		{
+    			document.getElementById("emaill").innerHTML="**Invalid position of @**";
+    			return false;
+    		}
+    		if(email.charAt(email.length-4)!='.') //agar . ki position total email -4 ke position pe nahi he to ye print karega
+    		{
+    			document.getElementById("emaill").innerHTML="**invalid position of .**";
+    			return false;
+    		}
+    		else
+    		{
+    			document.getElementById("emaill").innerHTML="";
+    		}	
+    	}
+    </script>
+</body>
+</html>
